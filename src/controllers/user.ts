@@ -82,4 +82,7 @@ route.post('/logout', authMiddleware, async (c) => {
   }
 });
 
+route.get('/', (c) => c.text('API Password-ACL en route 🚀'));
+
+
 export default route;
