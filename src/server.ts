@@ -1,12 +1,13 @@
-import { serve } from '@hono/node-server'
-import App from './index.js'
+import { Hono } from 'hono';
+import dotenv from 'dotenv';
+import userRoutes from './controllers/user.js';
 
-const port = 3000
-console.log(`Server is running on http://localhost:${port}`)
+dotenv.config();
 
+const app = new Hono();
 
-serve({
-  fetch: App.fetch,
-  port
-})
+app.route('/', userRoutes);
 
+app.get('/', (c) => c.text('API Password-ACL en route 🚀'));
+
+app.fire();
